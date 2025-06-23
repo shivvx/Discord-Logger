@@ -1,0 +1,53 @@
+WP Discord Logger - WordPress Plugin
+Copyright (C) 2024 Shivam Kumar
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+================================================================================
+
+ADDITIONAL TERMS AND CONDITIONS
+
+1. ATTRIBUTION REQUIREMENT
+   - You must retain the original author attribution (Shivam Kumar) in all 
+     copies or substantial portions of the software
+   - Any derivative works must clearly indicate they are based on this plugin
+   - Commercial distributions must include proper attribution
+
+2. TRADEMARK NOTICE
+   - "WP Discord Logger" is a trademark of Shivam Kumar
+   - You may not use this name for derivative works without permission
+
+3. SUPPORT AND WARRANTY DISCLAIMER
+   - This software is provided "as is" without warranty of any kind
+   - The author is not obligated to provide support, updates, or bug fixes
+   - Use at your own risk
+
+4. THIRD-PARTY SERVICES
+   - This plugin integrates with Discord's webhook API
+   - Users are responsible for complying with Discord's Terms of Service
+   - The author is not responsible for Discord service availability or changes
+
+5. DATA PRIVACY
+   - This plugin may log user activities and send them to Discord
+   - Site administrators are responsible for user privacy compliance
+   - Ensure proper user consent and privacy policy disclosure
+
+Contact Information:
+Author: Shivam Kumar
+LinkedIn: https://www.linkedin.com/in/shivvx/
+Email: Available through LinkedIn profile
+
+For the full GNU General Public License text, visit:
+https://www.gnu.org/licenses/gpl-2.0.html
