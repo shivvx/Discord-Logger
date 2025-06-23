@@ -1,3 +1,12 @@
+# WP Discord Logger
+
+**Professional WordPress and WooCommerce activity logger that sends real-time events to Discord via webhook.**
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![WordPress](https://img.shields.io/badge/WordPress-5.0%2B-blue.svg)
+![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue.svg)
+![License](https://img.shields.io/badge/license-GPL%20v2%2B-green.svg)
+
 === Discord Logger - Real-time Activity Monitoring ===
 Contributors: shivamkumar
 Tags: discord, logger, notifications, woocommerce, monitoring, activity, webhook
