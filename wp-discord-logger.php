@@ -1,33 +1,17 @@
 <?php
 /**
  * Plugin Name: Discord Logger - Real-time Activity Monitoring
- * Plugin URI: https://www.linkedin.com/in/shivvx/
- * Description: Transform your WordPress site monitoring with real-time Discord notifications:
- * 
- * ✨ Key Features:
- * • Real-time WordPress activity logging (users, posts, comments)
- * • Complete WooCommerce integration (orders, products, customers)
- * • Beautiful Discord embeds with rich formatting
- * • Professional admin dashboard with activity logs
- * • Secure webhook communication with retry handling
- * • GDPR-compliant data handling
- * • Zero configuration required - works out of the box
- * 
- * 🔥 Perfect for:
- * • E-commerce monitoring
- * • Team collaboration
- * • Security tracking
- * • User activity insights
- * • System change alerts
+ * Plugin URI: https://github.com/Shivamx-Dev/Discord-Logger/
+ * Description: Transform your WordPress site monitoring with real-time Discord notifications for all site activities including WooCommerce integration.
  * Version: 1.0.0
  * Author: Shivam Kumar
  * Author URI: https://www.linkedin.com/in/shivvx/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: wp-discord-logger
+ * Text Domain: discord-logger-real-time-activity-monitoring
  * Domain Path: /languages
  * Requires at least: 5.0
- * Tested up to: 6.4
+ * Tested up to: 6.8
  * Requires PHP: 7.4
  * Network: true
  * 
@@ -906,9 +890,15 @@ class WP_Discord_Logger {
     }
     
     public function settings_init() {
-        register_setting('wpdl_settings', 'wpdl_webhook_url');
-        register_setting('wpdl_settings', 'wpdl_bot_name');
-        register_setting('wpdl_settings', 'wpdl_avatar_url');
+        register_setting('wpdl_settings', 'wpdl_webhook_url', array(
+            'sanitize_callback' => array($this, 'sanitize_webhook_url')
+        ));
+        register_setting('wpdl_settings', 'wpdl_bot_name', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('wpdl_settings', 'wpdl_avatar_url', array(
+            'sanitize_callback' => array($this, 'sanitize_avatar_url')
+        ));
         
         add_settings_section(
             'wpdl_settings_section',
@@ -982,6 +972,37 @@ class WP_Discord_Logger {
     
     public function settings_section_callback() {
         echo 'Configure your Discord webhook settings below:';
+    }
+
+    public function sanitize_webhook_url($url) {
+        $url = esc_url_raw($url);
+        if (!$this->is_valid_discord_webhook($url)) {
+            add_settings_error(
+                'wpdl_webhook_url',
+                'invalid_webhook',
+                'Invalid Discord webhook URL format. Must be a valid Discord webhook URL.',
+                'error'
+            );
+            return '';
+        }
+        return $url;
+    }
+
+    public function sanitize_avatar_url($url) {
+        if (empty($url)) {
+            return '';
+        }
+        $url = esc_url_raw($url);
+        if (!preg_match('/^https:\/\/.+/', $url)) {
+            add_settings_error(
+                'wpdl_avatar_url',
+                'invalid_avatar_url',
+                'Avatar URL must start with https://',
+                'error'
+            );
+            return '';
+        }
+        return $url;
     }
     
     public function options_page() {

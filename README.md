@@ -1,250 +1,122 @@
-# WP Discord Logger
+=== Discord Logger - Real-time Activity Monitoring ===
+Contributors: shivamkumar
+Tags: discord, logger, notifications, woocommerce, monitoring, activity, webhook
+Requires at least: 5.0
+Tested up to: 6.8
+Requires PHP: 7.4
+Stable tag: 1.0.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-**Professional WordPress and WooCommerce activity logger that sends real-time events to Discord via webhook.**
+Transform your WordPress site monitoring with real-time Discord notifications for all site activities including WooCommerce integration.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![WordPress](https://img.shields.io/badge/WordPress-5.0%2B-blue.svg)
-![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue.svg)
-![License](https://img.shields.io/badge/license-GPL%20v2%2B-green.svg)
+== Description ==
 
-## 🚀 Features
+Discord Logger provides real-time activity monitoring for your WordPress site by sending beautifully formatted notifications to your Discord server. Track user activities, content changes, WooCommerce orders, and system events - all in one place.
 
-### WordPress Event Monitoring
-- 👤 **User Activities**: Registration, login/logout, profile updates, deletions
-- 📝 **Content Management**: Post publications, updates, deletions, status changes
-- 💬 **Comment System**: New comments, status changes, deletions
-- 🔌 **Plugin Management**: Activations, deactivations
-- 🎨 **Theme Changes**: Theme switching notifications
-- 🔄 **Core Updates**: WordPress version updates
-- 💥 **Error Logging**: Critical WordPress errors
+= ✨ Key Features =
 
-### WooCommerce Integration
-- 🛒 **Order Management**: New orders, status changes, refunds
-- 💰 **Payment Processing**: Payment completions, failures
-- 📦 **Product Management**: New products, updates, inventory changes
-- 👥 **Customer Activities**: New registrations, address updates
-- 🛍️ **Shopping Cart**: Add to cart, item removals
-- 🎟️ **Coupon Usage**: Coupon applications and usage tracking
-- 📊 **Stock Management**: Stock level changes and alerts
+* Real-time WordPress activity logging (users, posts, comments)
+* Complete WooCommerce integration (orders, products, customers)
+* Beautiful Discord embeds with rich formatting
+* Professional admin dashboard with activity logs
+* Secure webhook communication with retry handling
+* GDPR-compliant data handling
+* Zero configuration required - works out of the box
 
-### Professional Admin Interface
-- ⚙️ **Settings Management**: Easy webhook configuration
-- 📊 **Activity Logs**: Comprehensive logging with search and filtering
-- 🔧 **Tools**: Settings import/export, connection testing
-- 📈 **Statistics**: Success/failure rates and activity metrics
-- 🎯 **Dashboard Widget**: Quick activity overview
-- ❓ **Help Documentation**: Complete setup and troubleshooting guide
+= 🔥 Perfect for =
 
-## 📋 Requirements
+* E-commerce monitoring
+* Team collaboration
+* Security tracking
+* User activity insights
+* System change alerts
 
-- **WordPress**: 5.0 or higher
-- **PHP**: 7.4 or higher
-- **WooCommerce**: 3.0+ (optional, for e-commerce features)
-- **Discord Server**: With webhook permissions
+= 🎯 Monitored Events =
 
-## 🛠️ Installation
+**WordPress Events:**
+* User registrations, logins, and logouts
+* Post publications, updates, and deletions
+* Comment activities and moderation
+* Plugin and theme changes
+* Core WordPress updates
 
-### Method 1: WordPress Admin (Recommended)
-1. Download the plugin ZIP file
-2. Go to **Plugins > Add New > Upload Plugin**
-3. Choose the ZIP file and click **Install Now**
-4. Activate the plugin
+**WooCommerce Events:**
+* New orders and status changes
+* Payment completions and refunds
+* Product management
+* Customer registrations
+* Cart activities
+* Coupon usage
+* Stock level changes
 
-### Method 2: Manual Installation
-1. Extract the plugin files
-2. Upload the `wp-discord-logger` folder to `/wp-content/plugins/`
-3. Activate the plugin through the WordPress admin
+== Installation ==
 
-### Method 3: WP-CLI
-```bash
-wp plugin install wp-discord-logger.zip --activate
-```
+1. Upload the plugin files to the `/wp-content/plugins/discord-logger` directory, or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Go to Settings -> Discord Logger to configure your Discord webhook URL.
+4. Create a webhook in your Discord server:
+   * Go to Server Settings -> Integrations -> Create Webhook
+   * Choose the channel for notifications
+   * Copy the webhook URL
+5. Paste the webhook URL in the plugin settings
+6. Customize the bot name and avatar (optional)
+7. Save settings and test the connection
 
-## ⚙️ Configuration
+== Frequently Asked Questions ==
 
-### 1. Create Discord Webhook
-1. Open your Discord server settings
-2. Navigate to **Integrations → Webhooks**
-3. Click **"New Webhook"**
-4. Choose the channel for notifications
-5. Copy the webhook URL
+= Is this plugin GDPR compliant? =
 
-### 2. Configure Plugin
-1. Go to **Settings → Discord Logger**
-2. Paste your webhook URL
-3. Customize bot name and avatar (optional)
-4. Save settings
-5. Test the connection
+Yes, the plugin is designed with privacy in mind. It only logs necessary information and provides options to control what data is sent to Discord.
 
-### 3. Verify Setup
-- Use the **"Send Test Message"** button
-- Check your Discord channel for the test notification
-- Monitor the activity logs for any issues
+= Does it work with WooCommerce? =
 
-## 🎯 Usage
+Yes! The plugin includes comprehensive WooCommerce integration, tracking orders, products, customers, and more.
 
-Once configured, the plugin automatically monitors and logs:
+= Can I customize what events are logged? =
 
-### WordPress Events
-- User registrations and login activities
-- Content publishing and modifications
-- Comment interactions
-- Plugin and theme changes
-- System updates and errors
+Yes, future updates will include granular control over which events are logged and sent to Discord.
 
-### WooCommerce Events (if installed)
-- Order lifecycle management
-- Payment processing
-- Product catalog changes
-- Customer interactions
-- Shopping cart activities
-- Promotional code usage
+= Is it secure? =
 
-## 🔧 Advanced Configuration
+Yes, the plugin uses WordPress security best practices, including:
+* Nonce verification
+* Capability checking
+* Data sanitization
+* Secure webhook communication
 
-### Custom Bot Settings
-```php
-// Customize bot appearance
-update_option('wpdl_bot_name', 'Your Custom Bot Name');
-update_option('wpdl_avatar_url', 'https://your-domain.com/avatar.png');
-```
+= Will this slow down my site? =
 
-### Event Filtering
-The plugin provides hooks for custom event filtering:
+No, the plugin is designed to be lightweight and uses asynchronous communication with Discord to prevent any impact on site performance.
 
-```php
-// Disable specific events
-add_filter('wpdl_log_user_login', '__return_false');
+== Screenshots ==
 
-// Custom event data
-add_filter('wpdl_embed_data', function($data, $event_type) {
-    // Modify embed data before sending
-    return $data;
-}, 10, 2);
-```
+1. Discord notifications example
+2. Plugin settings page
+3. Activity logs dashboard
+4. WooCommerce integration
 
-## 📊 Monitoring & Analytics
+== Changelog ==
 
-### Activity Logs
-- Real-time event tracking
-- Success/failure monitoring
-- Detailed error reporting
-- Export capabilities
+= 1.0.0 =
+* Initial release
+* WordPress core event logging
+* WooCommerce integration
+* Admin dashboard with activity logs
+* Settings management interface
 
-### Dashboard Widget
-- Quick activity overview
-- Recent events summary
-- System health indicators
+== Upgrade Notice ==
 
-### Statistics
-- Total messages sent
-- Success/failure rates
-- Performance metrics
+= 1.0.0 =
+Initial release of Discord Logger
 
-## 🔒 Security & Privacy
+== Privacy Policy ==
 
-### Data Protection
-- All webhook communications use HTTPS
-- User data is sanitized before transmission
-- Local activity logs for troubleshooting
-- No sensitive data stored externally
+Discord Logger uses Discord webhooks to send notifications about site activities. The following data may be sent to Discord:
 
-### Privacy Compliance
-- Configurable data retention
-- User consent mechanisms
-- GDPR-friendly logging options
-- Transparent data handling
+* User actions (registrations, logins, etc.)
+* Post and comment activities
+* WooCommerce order information
+* System events
 
-### Security Features
-- Nonce verification for all AJAX requests
-- Capability checks for admin functions
-- Input sanitization and validation
-- SQL injection prevention
-
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-**Connection Failed**
-- Verify webhook URL format
-- Check Discord server permissions
-- Test internet connectivity
-
-**Missing Events**
-- Confirm plugin activation
-- Check event hook compatibility
-- Review activity logs for errors
-
-**Rate Limiting**
-- Discord limits message frequency
-- Plugin includes automatic retry logic
-- Monitor for 429 error responses
-
-### Debug Mode
-Enable WordPress debug mode for detailed logging:
-```php
-define('WP_DEBUG', true);
-define('WP_DEBUG_LOG', true);
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-### Development Setup
-```bash
-git clone https://github.com/shivvx/wp-discord-logger.git
-cd wp-discord-logger
-# Set up local WordPress development environment
-```
-
-## 📝 Changelog
-
-### Version 1.0.0
-- Initial release
-- Complete WordPress event monitoring
-- Full WooCommerce integration
-- Professional admin interface
-- Comprehensive documentation
-
-## 📄 License
-
-This plugin is licensed under the GNU General Public License v2 or later.
-
-**Copyright (C) 2024 Shivam Kumar**
-
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
-
-See [LICENSE.txt](LICENSE.txt) for full license details.
-
-## 👨‍💻 Author
-
-**Shivam Kumar**
-- LinkedIn: [https://www.linkedin.com/in/shivvx/](https://www.linkedin.com/in/shivvx/)
-- Professional WordPress Developer
-- Discord Integration Specialist
-
-## 🙏 Acknowledgments
-
-- WordPress community for excellent documentation
-- Discord for providing robust webhook API
-- WooCommerce team for comprehensive hook system
-- Beta testers and early adopters
-
-## 📞 Support
-
-For support, feature requests, or bug reports:
-
-1. Check the [troubleshooting guide](#-troubleshooting)
-2. Review existing [GitHub issues](https://github.com/shivvx/wp-discord-logger/issues)
-3. Contact via [LinkedIn](https://www.linkedin.com/in/shivvx/)
-
----
-
-**Made with ❤️ for the WordPress community**
+No personal data is stored by the plugin except for basic activity logs in the WordPress database.
